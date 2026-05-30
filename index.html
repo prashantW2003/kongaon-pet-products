@@ -159,6 +159,16 @@ footer a{color:var(--green-light)}
   .story{flex-direction:column}
   .story-card{max-width:100%}
 }
+
+@media(max-width:768px){
+  nav{padding:10px 15px;flex-wrap:wrap;height:auto;gap:10px}
+  .nav-logo{font-size:14px}
+  .nav-logo img{width:40px;height:40px}
+  .nav-cta{padding:8px 14px;font-size:13px}
+  .products-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px}
+  .product-card{min-height:180px}
+}
+
 </style>
 </head>
 <body>
@@ -677,7 +687,9 @@ function showTab(tab) {
   document.querySelectorAll('.animal-section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
+
+  const btn = document.querySelector('.tab-btn[onclick*="' + tab + '"]');
+  if(btn){ btn.classList.add('active'); }
 }
 
 let selectedRating = 0;
